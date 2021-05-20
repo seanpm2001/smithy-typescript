@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ extra["displayName"] = "Smithy :: Typescript :: Codegen"
 extra["moduleName"] = "software.amazon.smithy.typescript.codegen"
 
 dependencies {
+    api("software.amazon.smithy:smithy-aws-traits:[1.7.2, 2.0[")
     api("software.amazon.smithy:smithy-codegen-core:[1.5.0, 2.0[")
     api("software.amazon.smithy:smithy-waiters:[1.5.0, 2.0[")
     implementation("software.amazon.smithy:smithy-protocol-test-traits:[1.5.0, 2.0[")
