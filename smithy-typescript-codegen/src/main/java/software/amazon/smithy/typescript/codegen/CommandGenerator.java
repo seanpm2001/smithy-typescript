@@ -145,11 +145,16 @@ final class CommandGenerator implements Runnable {
             );
         } else {
             boolean isPublic = !operation.hasTrait(InternalTrait.class);
-            boolean isDeprecated = operation.hasTrait(DeprecatedTrait.class);
+            String docPrivacy = isPublic ? "@public" : "@internal";
 
-            writer.writeDocs(
-                (isPublic ? "@public\n" : "@internal\n")
-                + (isDeprecated ? "@deprecated\n" : "")
+            String deprecationString = "";
+            if (operation.hasTrait(DeprecatedTrait.class)) {
+                DeprecatedTrait deprecatedTrait = operation.getTrait(DeprecatedTrait.class).get();
+                deprecationString = "@deprecated " + deprecatedTrait.toString();
+            }
+
+            writer.writeDocs(docPrivacy + "\n"
+                + deprecationString + "\n"
                 + additionalDocs
             );
         }
